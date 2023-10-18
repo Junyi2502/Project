@@ -11,8 +11,8 @@ void endlogo();
 void mainMenu();
 
 //staff function
-int choice(int mchoice);
 void addStaff();
+int choice(int mchoice);
 void loginStaff();
 void staffMenu();
 void searchStaff();
@@ -21,6 +21,9 @@ void modifyStaff();
 void modifyStaffInfo(int mdid);
 void removeStaff();
 void yesOrNo(char yesno, int* c);
+void checkExistStaffIc(char addIc[13], int* ii);
+void checkExistStaffTel(char addTel[12], int* tt);
+int checStaffName(char addName[51]);
 
 //stock function
 void mainStock();
@@ -51,6 +54,7 @@ void topupMem();
 void memberList();
 void modifyMem();
 void deleteMem();
+int validationMem(char conT);
 
 
 //staff structure
@@ -194,65 +198,88 @@ int choice(int mchoice) {
 
 void addStaff() {
 
-	char yesno, addGender;//yesno for ask user choice yes or no and store to pointer//addGender for store user input data 
+	char yesno, addGender, addName[51];//yesno for ask user choice yes or no and store to pointer//addGender for store user input data 
 	char addIc[13], addtel[12];//use to identify is digit or not and the length no
-	int icDigits, telDigits, i, ch;//ch for file pointer , icDigits and telDigits is for identidy digit or not
+	int icDigits, telDigits, i, ch, check;//ch for file pointer , icDigits and telDigits is for identidy digit or not
 	struct staff stf;
 	FILE* st;
-	st = fopen("staff.txt", "a+");
+	st = fopen("staff.txt", "a");
 	if (st == NULL) {
 		printf("Can't open file.\n");
 		exit(-1);
 	}
 	printf("Register Staff\n");
 	printf("---------------------\n");
-	printf("\nEnter staff name(enter xxx to exit): ");
-	rewind(stdin);
-	scanf("%[^\n]", stf.staffBase.name);
+	do {
+		rewind(st);
+		rewind(stdin);
+		printf("\nEnter staff name(enter xxx to exit): ");
+		scanf("%[^\n]", addName);
 
-	if (strcmp(stf.staffBase.name, "xxx") == 0 || strcmp(stf.staffBase.name, "XXX") == 0) {
-		system("cls");
-		main();
-	}
+		if (strcmp(addName, "xxx") == 0 || strcmp(addName, "XXX") == 0) {
+			system("cls");
+			main();
+			break;
+		}
+		check = checStaffName(addName);
+
+		if (check == 1) {
+			printf("Please enter alphabet only for the name.\n");
+		}
+	} while (check == 1);
+	strcpy(stf.staffBase.name, addName);
 
 	do {
+		int ii = 0;
+		check = 0;
+		icDigits = 0;
+		rewind(st);
 		rewind(stdin);
 		printf("\nEnter staff IC number (exactly 12 digits): ");
 		scanf("%s", addIc);
-		icDigits = 1;
 
 		if (strlen(addIc) != 12) {
 			printf("Please enter exactly 12 digits without dashes!\n");
-			icDigits = 0;
 		}
+
 		else {
 			for (i = 0; i < 12; i++) {
 				if (!isdigit(addIc[i])) {
-					icDigits = 0;
+					icDigits = 1;
 					printf("Please enter only digits!\n");
 					break;
 				}
 			}
 		}
-	} while (strlen(addIc) != 12 || !icDigits);
+
+		checkExistStaffIc(addIc, &ii);
+
+		if (ii == 1) {
+			printf("Staff IC already exist.\n");
+			check = 1;
+		}
+
+	} while (strlen(addIc) != 12 || icDigits == 1 || check == 1);
 	strcpy(stf.IC, addIc);
 
 	do {
+		int tt = 0;
+		check = 0;
+		telDigits = 0;
+		rewind(st);
 		rewind(stdin);
 		printf("\nEnter staff telephone number:");
 		scanf("%s", addtel);
-		telDigits = 1;
 
 		if (strlen(addtel) != 11 && strlen(addtel) != 10) {
 			printf("Please enter exactly 10 or 11 digits without dashes!\n");
-			telDigits = 0;
 		}
 
 		else {
 			if (strlen(addtel) == 11) {
 				for (i = 0; i < 11; i++) {
 					if (!isdigit(addtel[i])) {
-						telDigits = 0;
+						telDigits = 1;
 						printf("Please enter only digits!\n");
 						break;
 					}
@@ -262,14 +289,22 @@ void addStaff() {
 			else if (strlen(addtel) == 10) {
 				for (i = 0; i < 10; i++) {
 					if (!isdigit(addtel[i])) {
-						telDigits = 0;
+						telDigits = 1;
 						printf("Please enter only digits!\n");
 						break;
 					}
 				}
 			}
 		}
-	} while (strlen(addtel) != 11 && strlen(addtel) != 10 || !telDigits);
+
+		checkExistStaffTel(addtel, &tt);
+
+		if (tt == 1) {
+			printf("Telephone number already exist.\n");
+			check = 1;
+		}
+
+	} while (strlen(addtel) != 11 && strlen(addtel) != 10 || telDigits == 1 || check == 1);
 	strcpy(stf.telNum, addtel);
 
 	printf("\nEnter your password:");
@@ -375,7 +410,7 @@ void staffMenu() {
 			break;
 		default:
 			system("cls");
-			printf("\nIncorrect choice!\n");
+			printf("\nIncorrect choice!\n\n");
 			printf("Only can select 1 until 6 for your choice.\n");
 		}
 	} while (option > 6 || option < 1);
@@ -651,10 +686,10 @@ void modifyStaff() {
 
 void modifyStaffInfo(int mdid) {
 
-	int chmoin, choice, newIcDigits, newTelDigits, m, ch;  //ch is for file pointer //m as a condition for a for loop
+	int chmoin, choice, newIcDigits, newTelDigits, m, ch, mcheck;  //ch is for file pointer //m as a condition for a for loop
 	//choice for let user choose with part want to change//chmoin to ask user comfirm to modify the data or not
 	char yesno, newGender;//yesno for ask user choice yes or no and store to pointer//newGender is the user input data
-	char newIc[13], newTel[12];
+	char newIc[13], newTel[12], newName[51];
 	struct staff stf;
 	FILE* st;
 	FILE* md;
@@ -689,9 +724,19 @@ void modifyStaffInfo(int mdid) {
 
 				if (choice == 1) {
 					printf("\nThe current name is %s", stf.staffBase.name);
-					printf("\nNew name is :");
-					rewind(stdin);
-					scanf(" %[^\n]", stf.staffBase.name);
+					do {
+						rewind(stdin);
+						printf("\nNew name is :");
+						scanf(" %[^\n]", newName);
+
+						mcheck = checStaffName(newName);
+
+						if (mcheck == 1) {
+							printf("Please enter alphabet only for the name.\n");
+						}
+					} while (mcheck == 1);
+					strcpy(stf.staffBase.name, newName);
+
 					fprintf(md, "%d %s= %s %s %s %s\n", stf.staffBase.id, stf.staffBase.name, stf.gender, stf.IC, stf.telNum, stf.psw);
 				}
 
@@ -721,25 +766,35 @@ void modifyStaffInfo(int mdid) {
 				else if (choice == 3) {
 					printf("\nThe current IC no is %s", stf.IC);
 					do {
+						int mii = 0;
+						mcheck = 0;
+						newIcDigits = 0;
 						rewind(stdin);
 						printf("\nNew IC no is :");
 						scanf("%s", newIc);
-						newIcDigits = 1;
 
 						if (strlen(newIc) != 12) {
 							printf("Please enter exactly 12 digits without dashes!\n");
-							newIcDigits = 0;
+							newIcDigits = 1;
 						}
 						else {
 							for (m = 0; m < 12; m++) {
 								if (!isdigit(newIc[m])) {
-									newIcDigits = 0;
+									newIcDigits = 1;
 									printf("Please enter only digits!\n");
 									break;
 								}
 							}
 						}
-					} while (strlen(newIc) != 12 || !newIcDigits);
+
+						checkExistStaffIc(newIc, &mii);
+
+						if (mii == 1) {
+							printf("Staff IC already exist.\n");
+							mcheck = 1;
+						}
+
+					} while (strlen(newIc) != 12 || newIcDigits == 1 || mcheck == 1);
 					strcpy(stf.IC, newIc);
 
 					fprintf(md, "%d %s= %s %s %s %s\n", stf.staffBase.id, stf.staffBase.name, stf.gender, stf.IC, stf.telNum, stf.psw);
@@ -748,20 +803,22 @@ void modifyStaffInfo(int mdid) {
 				else if (choice == 4) {
 					printf("\nThe current telephone no is %s", stf.telNum);
 					do {
+						int mtt = 0;
+						mcheck = 0;
+						newTelDigits = 0;
 						rewind(stdin);
 						printf("\nNew telephone no is :");
 						scanf("%s", newTel);
-						newTelDigits = 1;
 
 						if (strlen(newTel) != 11 && strlen(newTel) != 10) {
 							printf("Please enter exactly 10 or 11 digits without dashes!\n");
-							newTelDigits = 0;
 						}
+
 						else {
 							if (strlen(newTel) == 11) {
 								for (m = 0; m < 11; m++) {
 									if (!isdigit(newTel[m])) {
-										newTelDigits = 0;
+										newTelDigits = 1;
 										printf("Please enter only digits!\n");
 										break;
 									}
@@ -770,14 +827,22 @@ void modifyStaffInfo(int mdid) {
 							else if (strlen(newTel) == 10) {
 								for (m = 0; m < 10; m++) {
 									if (!isdigit(newTel[m])) {
-										newTelDigits = 0;
+										newTelDigits = 1;
 										printf("Please enter only digits!\n");
 										break;
 									}
 								}
 							}
 						}
-					} while (strlen(newTel) != 11 && strlen(newTel) != 10 || !newTelDigits);
+
+						checkExistStaffTel(newTel, &mtt);
+
+						if (mtt == 1) {
+							printf("Telephone num already exist.\n");
+							mcheck = 1;
+						}
+
+					} while (strlen(newTel) != 11 && strlen(newTel) != 10 || newTelDigits == 1 || mcheck == 1);
 					strcpy(stf.telNum, newTel);
 
 					fprintf(md, "%d %s= %s %s %s %s\n", stf.staffBase.id, stf.staffBase.name, stf.gender, stf.IC, stf.telNum, stf.psw);
@@ -800,7 +865,7 @@ void modifyStaffInfo(int mdid) {
 				}
 
 				else {
-					printf("\nError!Please enter 1 to 5 only.");
+					printf("\nError!Please enter 1 to 6 only.\n");
 					system("pause");
 					system("cls");
 				}
@@ -852,6 +917,7 @@ void modifyStaffInfo(int mdid) {
 			system("cls");
 			fclose(st);
 			fclose(md);
+			remove("modify.txt");
 			staffMenu();
 		}
 		else {
@@ -862,7 +928,7 @@ void modifyStaffInfo(int mdid) {
 
 void removeStaff() {
 
-	int removeId, ch;//ch is for file pointer 
+	int removeId, ch, found;//ch is for file pointer 
 	char yesno; //yesno for ask user choice yes or no and store to pointer
 	struct staff stf;
 	FILE* st;
@@ -886,8 +952,10 @@ void removeStaff() {
 		staffMenu();
 	}
 
+	found = 0;
 	while (fscanf(st, "%d %[^\=]= %s %s %s %s\n", &stf.staffBase.id, stf.staffBase.name, stf.gender, stf.IC, stf.telNum, stf.psw) != EOF) {
 		if (removeId == stf.staffBase.id) {
+			found = 1;
 			printf("\nStaff ID %d information is", stf.staffBase.id);
 			printf("\nStaff Name: %s", stf.staffBase.name);
 			printf("\nStaff Gender: %s", stf.gender);
@@ -898,7 +966,7 @@ void removeStaff() {
 			fprintf(md, "%d %s= %s %s %s %s\n", stf.staffBase.id, stf.staffBase.name, stf.gender, stf.IC, stf.telNum, stf.psw);
 		}
 	}
-	if (removeId != stf.staffBase.id) {
+	if (!found) {
 		printf("No staff founded.\n");
 		system("pause");
 		system("cls");
@@ -908,8 +976,8 @@ void removeStaff() {
 	}
 
 	do {
-		printf("\nAre you sure want to delete this staff?(Y/N):");
 		rewind(stdin);
+		printf("\nAre you sure want to delete this staff?(Y/N):");
 		scanf("%c", &yesno);
 
 		yesOrNo(yesno, &ch);
@@ -923,6 +991,7 @@ void removeStaff() {
 			system("cls");
 			fclose(st);
 			fclose(md);
+			remove("modify.txt");
 			removeStaff();
 		}
 		else if (ch == 3) {
@@ -951,6 +1020,59 @@ void yesOrNo(char yesno, int* c) {
 	else {
 		*c = 3;
 	}
+}
+
+void checkExistStaffIc(char addIc[13], int* ii) {
+	struct staff stf;
+	FILE* st;
+	st = fopen("staff.txt", "r");
+	if (st == NULL) {
+		printf("Can't open file.\n");
+		exit(-1);
+	}
+
+	while (fscanf(st, "%d %[^\=]= %s %s %s %s\n", &stf.staffBase.id, stf.staffBase.name, stf.gender, stf.IC, stf.telNum, stf.psw) != EOF) {
+		if (strcmp(addIc, stf.IC) == 0) {
+			*ii = 1;
+			break;
+		}
+		else if (strcmp(addIc, stf.IC) != 0) {
+			*ii = 0;
+		}
+	}
+	fclose(st);
+}
+
+void checkExistStaffTel(char addTel[13], int* tt) {
+	struct staff stf;
+	FILE* st;
+	st = fopen("staff.txt", "r");
+	if (st == NULL) {
+		printf("Can't open file.\n");
+		exit(-1);
+	}
+
+	while (fscanf(st, "%d %[^\=]= %s %s %s %s\n", &stf.staffBase.id, stf.staffBase.name, stf.gender, stf.IC, stf.telNum, stf.psw) != EOF) {
+		if (strcmp(addTel, stf.telNum) == 0) {
+			*tt = 1;
+			break;
+		}
+		else if (strcmp(addTel, stf.telNum) != 0) {
+			*tt = 0;
+		}
+	}
+	fclose(st);
+}
+
+int checStaffName(char addName[51]) {
+	int i;
+
+	for (i = 0; addName[i]; i++) {
+		if (!isalpha(addName[i]) && addName[i] != ' ') {
+			return 1;
+		}
+	}
+	return 0;
 }
 
 void mainStock() {
@@ -1191,6 +1313,13 @@ void stockRefund() {
 			if (strcmp(rcode, stk.sCode) == 0 && rdate == stk.date && rmonth == stk.month) {
 
 				found = 1;
+
+
+				printf("\nStock details:\n");
+				printf("Stock Code: %s\n", stk.sCode);
+				printf("Stock Quantity: %d\n", stk.sqty);
+				printf("Restock Day: %d\n", stk.date);
+				printf("Restock Month: %d\n\n", stk.month);
 
 				printf("\nAre you sure you want to delete this stock? (Y/N): ");
 				rewind(stdin);
@@ -1737,14 +1866,14 @@ void salesSearch() {
 
 		if (strcmp(add.salesOrderId, search) == 0) {
 			printf("\n\nOrderId Itemcode VoucherId  quantity    price   Time     Date \n");
-			printf("%s \t%s   \t%s   \t%d \t%.2lf \t%s \t%2.d-%2.d-%2.d \n", add.salesOrderId, add.itemCode, add.vouId, add.qtyOrdered, add.price, add.time, add.date.d, add.date.m, add.date.y);
+			printf("%s \t%s   \t%s   \t%d \t%.2lf \t%s \t%2.d-%2.d-%2.d \n\n", add.salesOrderId, add.itemCode, add.vouId, add.qtyOrdered, add.price, add.time, add.date.d, add.date.m, add.date.y);
 
 			
 			found = 1;
 		}
 	}
 	if (!found) {
-		printf("norecord found\n");
+		printf("norecord found\n\n");
 	}
 	system("pause");
 	system("cls");
@@ -1952,7 +2081,7 @@ void salesReport() {
 		printf("%s \t%s   \t%s   \t%d \t%.2lf \t%s \t%2.d-%2.d-%2.d \t%.2lf\n", add.salesOrderId, add.itemCode, add.vouId, add.qtyOrdered, add.price, add.time, add.date.d, add.date.m, add.date.y, salessubttl);
 	}
 	printf("================================================================================\n");
-	printf("Total\t\t\t\t\t\t\t%.2lf", salesttlprice);
+	printf("Total\t\t\t\t\t\t\t\t\t%.2lf", salesttlprice);
 	printf("\nPress any key to return sales menu");
 	system("pause");
 	system("cls");
@@ -2074,7 +2203,8 @@ void memMenu()
 				}
 				else if (choice == 6) {
 					printf("Thanks For Using This Function\n");
-					mainMenu();
+					system("cls");
+					main();
 				}
 				else {
 					printf("Invalid Number, Please Enter Again\n");
@@ -2098,7 +2228,7 @@ void memReg()
 	char newIc[13], newName[31];
 	srand(time(NULL));
 	int random_number = (rand() % 9999) + 1000;
-	char wish;
+	char conT;
 	int selection, icCheck;
 	member mem;
 	FILE* fpm;
@@ -2170,18 +2300,18 @@ void memReg()
 				break;
 			}
 		}
-		if (valid && len == 10) { // Input is valid if it contains only digits and has exactly 10 characters
+		if (valid && (len == 11 || len == 10)) { // Input is valid if it contains only digits and has exactly 10 characters
 			contactNum = atoi(contNum); // Convert input string to integer
 			break; // Exit loop if input is valid
 		}
 		else {
-			printf("Invalid input. Please enter a 10-digit contact number without dashes: ");
+			printf("Invalid input. Please enter 10 to 11-digit contact number without dashes: ");
 			fflush(stdin); // Clear input buffer before next iteration
 		}
 	}
 	mem.contactNum = contactNum;
 	rewind(stdin);
-	printf("\nEnter Your Age (minimum age is 18): ");
+	printf("\n>Enter Your Age (minimum age is 18): ");
 	do {
 		if (scanf("%d", &mem.age) != 1) {
 			printf("\nError: Invalid input. Please enter a valid age.\n");
@@ -2199,19 +2329,19 @@ void memReg()
 		}
 	} while (mem.age < 18 || mem.age > 150);
 	rewind(stdin);
-	printf("\nEnter Your Email Address: ");
+	printf("\n>Enter Your Email Address: ");
 	scanf("%[^\n]", mem.memEmail);
 	do {
 		rewind(stdin);
-		printf("Do You Wish To Re-enter Your Info? (Y / N) ");
-		scanf(" %c", &wish);
-		wish = toupper(wish);
-		if (wish == 'Y')
+		printf("\nDo You Wish To Re-enter Your Info? (Y / N) >");
+		scanf(" %S", &conT);
+		validateMem(conT);
+		if (validateMem(conT) == 0)
 		{
 			system("cls");
 			memReg();
 		}
-		else if (wish == 'N')
+		else if (validateMem(conT) == 1)
 		{
 			srand(time(0));
 			mem.inspect.memID = random_number;
@@ -2230,12 +2360,12 @@ void memReg()
 			system("cls");
 			memMenu();
 		}
-		else
+		else if (validateMem(conT) == 2)
 		{
 			printf("Error: Invalid input. Please enter Y or N.\n");
 			rewind(stdin);
 		}
-	} while (wish != 'Y' && wish != 'N');
+	} while (validateMem(conT) != 0 && validateMem(conT) != 1);
 }
 
 void memStat() {
@@ -2252,22 +2382,22 @@ void memStat() {
 	printf("LOG IN FOR DETAIL >>>>\n");
 	do {
 		rewind(stdin);
-		printf("Continue? (Y / N) ");
-		scanf(" %c", &conT);
-		conT = toupper(conT);
-		if (conT == 'Y')
+		printf("Continue? (Y / N) > ");
+		scanf("%c", &conT);
+		validateMem(conT);
+		if (validateMem(conT) == 0)
 		{
 			break;
 		}
-		else if (conT == 'N')
+		else if (validateMem(conT) == 1)
 		{
 			system("cls");
 			memMenu();
 		}
-		else {
+		else if (validateMem(conT) == 2){
 			printf("Invalid Enter, Only (Y / N)\n");
 		}
-	} while (conT != 'Y' && conT != 'N');
+	} while (validateMem(conT) != 0 && validateMem(conT) != 1);
 	printf("Enter the IC number to search: ");
 	if (scanf("%12s", searchIC) != 1) {
 		printf("Error: Failed to read input.\n");
@@ -2346,6 +2476,7 @@ void memStat() {
 
 void topupMem()
 {
+	char conT;
 	member mem;
 	FILE* fpm;
 
@@ -2354,8 +2485,25 @@ void topupMem()
 		printf("Error: Failed to open members file.\n");
 		exit(EXIT_FAILURE);
 	}
+	do {
+		rewind(stdin);
+		printf("Continue? (Y / N) > ");
+		scanf("%s", &conT);
+		validateMem(conT);
+		if (validateMem(conT) == 0)
+		{
+			break;
+		}
+		else if (validateMem(conT) == 1)
+		{
+			system("cls");
+			memMenu();
+		}
+		else if (validateMem(conT) == 2) {
+			printf("Invalid Enter, Only (Y / N)\n");
+		}
+	} while (validateMem(conT) != 0 && validateMem(conT) != 1);
 	fread(&mem, sizeof(mem), 1, fpm);
-
 	printf("WELCOME, member %s\n", mem.name);
 	printf("[Top-Up Section]\n");
 	printf(">Your Member Expired after   = %d\n", mem.inspect.expDate);
@@ -2364,9 +2512,10 @@ void topupMem()
 	int addPt;
 	char wishAdd = '\0';
 
-	printf("How many Points do you wish to top-up? >>> \n");
+	printf("\n10 point = 1 day expired && RM 1.00\n");
+	printf("How many Points do you wish to top-up? >>> ");
 	if (scanf("%d", &addPt) != 1) {
-		printf("Invalid input. Please enter a number.\n");
+		printf("Invalid input. Please enter a number.>>> ");
 		system("pause");
 		system("cls");
 		topupMem();
@@ -2374,7 +2523,7 @@ void topupMem()
 	}
 	do {
 		rewind(stdin);
-		printf("Your wish to Topup %d points (Y = YES or N = NO)\n", addPt);
+		printf("Your wish to Topup %d points (Y = YES or N = NO)> ", addPt);
 		scanf("%c", &wishAdd);
 		wishAdd = toupper(wishAdd);
 		if (wishAdd == 'Y')
@@ -2382,7 +2531,7 @@ void topupMem()
 			double payment;
 			int paymentMethod;
 			payment = (double)addPt / 10;
-			printf("Total PAYMENT IS RM%.2lf\n", payment);
+			printf("\nTotal PAYMENT IS RM%.2lf\n", payment);
 			printf("Payment Method\n");
 			printf("1.Debit / Credit Card\n");
 			printf("2.Online Banking\n");
@@ -2403,7 +2552,9 @@ void topupMem()
 					case 4:
 						mem.inspect.memPt += addPt;
 						mem.inspect.expDate += (int)payment;
-						printf("Payment Complete!!! Your new Member Point is %d\n", mem.inspect.memPt);
+						printf("Proceesing the transaction.....\n");
+						system("pause");
+						printf("\nPayment Complete!!! Your new Member Point is %d\n", mem.inspect.memPt);
 						if (mem.inspect.memPt >= 500 && mem.inspect.memPt <= 999) {
 							strcpy(mem.inspect.memStat, "Silver");
 						}
@@ -2435,7 +2586,7 @@ void topupMem()
 			printf("Do you wish to view your profile?\n");
 			char goDetail;
 			fflush(stdin);
-			printf("Y = Yes , N = No");
+			printf("(Y = Yes , N = No) > ");
 			do {
 				scanf(" %c", &goDetail);
 				goDetail = toupper(goDetail);
@@ -2505,22 +2656,21 @@ void modifyMem() {
 	char conT;
 	do {
 		rewind(stdin);
-		printf("Continue? (Y / N) ");
-		scanf(" %c", &conT);
-		conT = toupper(conT);
-		if (conT == 'Y')
+		printf("Continue? (Y / N) > ");
+		scanf("%s", &conT);
+		if (validateMem(conT) == 0)
 		{
 			break;
 		}
-		else if (conT == 'N')
+		else if (validateMem(conT) == 1)
 		{
 			system("cls");
 			memMenu();
 		}
-		else {
+		else if (validateMem(conT) == 2) {
 			printf("Invalid Enter, Only (Y / N)\n");
 		}
-	} while (conT != 'Y' && conT != 'N');
+	} while (validateMem(conT) != 0 && validateMem(conT) != 1);
 
 	printf("Enter the IC number to search: ");
 	if (scanf("%12s", searchIC) != 1) {
@@ -2693,9 +2843,6 @@ void modifyMem() {
 		else {
 			fwrite(&mem, sizeof(mem), 1, fpTemp);
 		}
-
-
-
 	}
 
 	if (stop == 'Y') {
@@ -2753,25 +2900,7 @@ void deleteMem() {
 
 	// Loop through the members in the binary file
 	printf("LOG IN FOR DELETE >>>>\n");
-	char conT;
-	do {
-		rewind(stdin);
-		printf("Continue? (Y / N) ");
-		scanf(" %c", &conT);
-		conT = toupper(conT);
-		if (conT == 'Y')
-		{
-			break;
-		}
-		else if (conT == 'N')
-		{
-			system("cls");
-			memMenu();
-		}
-		else {
-			printf("Invalid Enter, Only (Y / N)\n");
-		}
-	} while (conT != 'Y' && conT != 'N');
+	
 	printf("Enter the IC number to search: ");
 	if (scanf("%12s", searchIC) != 1) {
 		printf("Error: Failed to read input.\n");
@@ -2805,6 +2934,10 @@ void deleteMem() {
 			if (confirm == 'Y' || confirm == 'y') {
 				// Do nothing, skip writing the member to temporary file to effectively delete the member
 				printf("Member with IC Number %s has been deleted.\n", searchIC);
+				printf("Redirect Back To Member Menu...\n");
+				system("pause");
+				system("cls");
+				memMenu();
 			}
 			else {
 				fwrite(&mem, sizeof(mem), 1, fpTemp); // Write the member to temporary file
@@ -2834,6 +2967,7 @@ void deleteMem() {
 
 void memberList()
 {
+	char conT;
 	FILE* fpm;
 	member mem;
 
@@ -2842,6 +2976,25 @@ void memberList()
 		printf("Error: Failed to open members file.\n");
 		exit(EXIT_FAILURE);
 	}
+	printf("LOG IN FOR MEMBER LIST SHOW >\n");
+	do {
+		rewind(stdin);
+		printf("Continue? (Y / N) > ");
+		scanf("%s", &conT);
+		validateMem(conT);
+		if (validateMem(conT) == 0)
+		{
+			break;
+		}
+		else if (validateMem(conT) == 1)
+		{
+			system("cls");
+			memMenu();
+		}
+		else if (validateMem(conT) == 2) {
+			printf("Invalid Enter, Only (Y / N)\n");
+		}
+	} while (validateMem(conT) != 0 && validateMem(conT) != 1);
 	rewind(fpm);
 	printf(">>> Member List <<<\n");
 	printf("====================================================\n");
@@ -2859,6 +3012,23 @@ void memberList()
 
 }
 
+int validateMem(char conT)
+{
+	conT = toupper(conT);
+	// validate for the continue select in all the module expect register
+	if (conT == 'Y')
+	{
+		return 0;
+	}
+	else if (conT == 'N') 
+	{
+		return 1;
+	}
+	else
+	{
+		return 2;
+	}
+}
 
 
 

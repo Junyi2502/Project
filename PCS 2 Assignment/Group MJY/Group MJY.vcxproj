@@ -130,7 +130,12 @@
     <ClCompile Include="GroupMJY.c" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="addsales.txt" />
     <Text Include="edit.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="members.bin" />
+    <None Include="temp.bin" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

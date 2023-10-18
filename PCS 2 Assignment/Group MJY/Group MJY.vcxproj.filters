@@ -23,5 +23,16 @@
     <Text Include="edit.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="addsales.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="members.bin">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="temp.bin">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
