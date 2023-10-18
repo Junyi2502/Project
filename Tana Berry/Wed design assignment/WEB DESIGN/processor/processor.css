@@ -1,0 +1,103 @@
+@charset "utf-8";
+html {
+  background-color: rgb(128, 128, 128);
+}
+
+#one > a > img{
+  width: 25%;
+  margin-left: 25em;
+}
+  
+#two > label > img{
+    width: 2.5%;
+    background-color: rgb(233, 217, 217);
+}
+  
+header div#two{
+    text-align: right;
+}
+
+body {
+	margin: 0px auto;
+	width: 100%;
+	max-width: 1020px;
+	min-width: 640px;
+  min-height: 100%;
+}
+
+body {
+    background-color: rgb(122, 171, 167);
+}
+
+.list > ul > li > a {
+    background: linear-gradient(to right bottom,white,grey);
+    font-size: 1.2em;
+    line-height: 2em;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    margin-bottom: 30px;
+}  
+
+.list > ul > li > a:link, 
+.list > ul > li > a:visited {
+  color: black;
+}
+
+.list > ul > li > a:hover, 
+.list > ul > li > a:active {
+  background: cyan;  
+}   
+
+.list > ul > li{
+  display: block;
+  float: left;
+  width: 9.9%;
+}
+
+#f1, #f2 {
+  text-align: center;
+}
+
+#intel5 {
+  float: left;
+  width: 30%;
+  margin-left: 2%;
+}
+
+#intel5a {
+  float: left;
+  width: 30%;
+  margin-left: 3%;
+}
+
+#intel7 {
+  float: left;
+  width: 30%;
+  margin-left: 3%;
+  margin-right: 2%;
+}
+
+#intel7a {
+  float: left;
+  width: 30%;
+  margin-left: 2%;
+}
+
+#amd5{
+  float: left;
+  width: 30%;
+  margin-left: 3%;
+}
+
+#amd7 {
+  float: left;
+  width: 30%;
+  margin-left: 3%;
+  margin-right: 2%;
+}
+
+article {
+  font-size: 1.5em;
+  font-family:Arial, Helvetica, sans-serif;
+}

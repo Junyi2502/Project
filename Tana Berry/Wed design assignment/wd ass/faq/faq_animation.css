@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+/* animation for title*/
+
+@keyframes shadow {
+    0%{text-shadow: -3px 0px 10px rgb(220, 130, 255);}
+    25%{text-shadow: 0px 3px 10px rgb(130, 222, 255);}
+    50%{text-shadow: 3px 0px 10px rgb(230, 255, 130);}
+    75%{text-shadow: 0px -3px 10px rgb(255, 190, 130);}
+}
+
+.title {
+    animation: shadow;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-duration: 3s;
+}

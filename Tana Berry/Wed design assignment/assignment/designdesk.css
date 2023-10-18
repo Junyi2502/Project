@@ -1,0 +1,270 @@
+@charset "utf-8";
+html {
+	background:url(background.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+  
+header {
+	background: linear-gradient(to left top,rgb(29, 4, 139),rgb(124, 4, 148));
+	width : auto;
+	padding-bottom: 6%;
+	text-align: center;
+}
+
+header ::-webkit-input-placeholder {
+    color: black;
+}
+
+
+body {
+	margin:0 auto;
+	width: 100%;
+	max-width: 1020px;
+	min-width: 640px;
+	background-color: rgb(9, 8, 8);
+	color: aliceblue;
+}
+
+.top {
+	background: url(bgtop.jpg);
+	
+}
+
+.desktop {
+	width: auto;
+	margin: auto;
+	padding: 2em;
+}
+
+article.desktoptitle {
+	text-align: center;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2em;
+}
+
+nav  li{
+	text-align: center;
+	display: block;
+	float: left;
+	width: 9.9%;
+	margin-top: 10px;
+	
+}
+
+nav a{
+	display: block;
+	background: linear-gradient(to right bottom,rgb(121, 119, 119),black);
+	text-align: center;
+	text-decoration: none;
+	line-height: 2em;
+	font-size: 1.2em;
+	color: aliceblue;
+}
+  
+section#desktop img{
+	width: 250px;
+}
+
+div#mag {
+	text-align: right;
+	width: auto;
+}
+div#mag > input {
+	margin-top: 0px;
+}
+
+.describe {
+	font-size: 1.5em;
+	font-family: cursive;
+}
+
+.aimg, .bimg, .cimg, .dimg, .eimg, .fimg, .gimg, .himg, .iimg, .jimg, .kimg
+{
+	float: left;
+	max-width: 200%;
+	max-height: 200%;
+	
+}
+
+.a {
+	margin-top: 2em;
+}
+
+.a, .b, .c, .d, .e, .f, .g, .h, .i, .j
+{
+	width: 100%;
+	height: 200px;
+	padding-bottom: 100px;
+	margin-bottom: 8em;
+}
+
+.a > a > input
+{
+	color: rgba(4, 26, 77, 0.8);
+	font-size: 1em;
+	height: 4em;
+	width: 8em;
+	float: right;
+	margin-right: 5em;
+}
+
+.b > a > input
+{
+	color: rgba(4, 26, 77, 0.8);
+	font-size: 1em;
+	height: 4em;
+	width: 8em;
+	float: right;
+	margin-right: 5em;
+}
+
+.c > a > input
+{
+	color: rgba(4, 26, 77, 0.8);
+	font-size: 1em;
+	height: 4em;
+	width: 8em;
+	float: right;
+	margin-right: 5em;
+}
+
+.d > a > input
+{
+	color: rgba(4, 26, 77, 0.8);
+	font-size: 1em;
+	height: 4em;
+	width: 8em;
+	float: right;
+	margin-right: 5em;
+}
+
+.e > a > input
+{
+	color: rgba(4, 26, 77, 0.8);
+	font-size: 1em;
+	height: 4em;
+	width: 8em;
+	float: right;
+	margin-right: 5em;
+}
+
+.f > a > input
+{
+	color: rgba(4, 26, 77, 0.8);
+	font-size: 1em;
+	height: 4em;
+	width: 8em;
+	float: right;
+	margin-right: 5em;
+}
+
+.g > a > input
+{
+	color: rgba(4, 26, 77, 0.8);
+	font-size: 1em;
+	height: 4em;
+	width: 8em;
+	float: right;
+	margin-right: 5em;
+}
+
+.h > a > input
+{
+	color: rgba(4, 26, 77, 0.8);
+	font-size: 1em;
+	height: 4em;
+	width: 8em;
+	float: right;
+	margin-right: 5em;
+}
+
+.i > a > input
+{
+	color: rgba(4, 26, 77, 0.8);
+	font-size: 1em;
+	height: 4em;
+	width: 8em;
+	float: right;
+	margin-right: 5em;
+}
+
+.j > a > input
+{
+	color: rgba(4, 26, 77, 0.8);
+	font-size: 1em;
+	height: 4em;
+	width: 8em;
+	float: right;
+	margin-right: 5em;
+}
+
+.k > a > input
+{
+	color: rgba(4, 26, 77, 0.8);
+	font-size: 1em;
+	height: 4em;
+	width: 8em;
+	float: right;
+	margin-right: 5em;
+}
+
+footer {
+    margin-top: 40px;
+    color: rgb(231, 237, 255);
+    position: relative;
+    clear:both;
+    font-family: sans-serif;
+    background: linear-gradient(to right bottom,rgb(29, 4, 139),rgb(124, 4, 148));
+    padding-bottom: 30px;
+}
+
+footer p {
+    margin-left: 20px;
+    font-size: 15px;
+    letter-spacing: 0;
+}
+
+table {
+    position: relative;
+    margin-left: 20px;
+    color: rgb(231, 237, 255);
+}
+
+.contact, .aboutus {
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding-top: 20px;
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+th {
+    font-weight: 500;
+    text-align: left;
+    letter-spacing: 0;
+    word-spacing: 0;
+    margin-right: 30px;
+    padding-right: 10px;
+}
+
+td {
+    padding-right: 50px;
+}
+
+a#tel, a#mail, a#about, a#form{
+    text-decoration: none;
+    color: rgb(231, 237, 255, 0.7);
+}
+
+a#tel:hover,a#mail:hover, a#about:hover, a#form:hover {
+    text-shadow:2px 2px 5px rgba(122, 162, 255, 0.8);
+}
+
+.tanaBerry {
+    margin-right: 20px;
+    margin-bottom: 0;
+    line-height: 0;
+    text-align: right;
+}

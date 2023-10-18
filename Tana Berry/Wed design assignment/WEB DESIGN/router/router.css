@@ -1,0 +1,84 @@
+@charset "utf-8";
+html {
+  background-color: rgb(128, 128, 128);
+}
+
+#one > a > img{
+  width: 25%;
+  margin-left: 25em;
+}
+
+#two > label > img{
+  width: 2.5%;
+  background-color: rgb(233, 217, 217);
+}
+
+header div#two{
+  text-align: right;
+}
+
+body {
+	margin: 0px auto;
+	width: 100%;
+	max-width: 1020px;
+	min-width: 640px;
+  min-height: 100%;
+}
+
+body {
+  background-color: rgb(233, 217, 217);
+}
+
+.list > ul > li > a {
+  background: linear-gradient(to right bottom,white,grey);
+  font-size: 1.2em;
+  line-height: 2em;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  margin-bottom: 30px;
+}  
+
+.list > ul > li > a:link, 
+.list > ul > li > a:visited {
+  color: black;
+}
+
+.list > ul > li > a:hover, 
+.list > ul > li > a:active {
+  background: cyan;
+}   
+
+.list > ul > li {
+  display: block;
+  float: left;
+  width: 9.9%;
+}
+
+#f1{
+  text-align: center;
+}
+
+#f2{
+  text-align: center;
+}
+
+div#router1, div#router2, div#router3, div#router4, div#router5, div#router6, div#router7, div#router8, div#router9 {
+    margin-top: 20px;
+    background-color: gainsboro;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px ;
+}
+
+article {
+  float: right;
+  width: 60%;
+  font-size: 2em;
+}
+
+article > a > input {
+   width: 25%;
+   padding: 15px;
+}

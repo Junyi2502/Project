@@ -1,0 +1,462 @@
+@charset "utf-8";
+html {
+  background:url("../background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+div#one > a > img{
+  width: 25%;
+  margin-left: 25em;
+}
+
+div#two > label > img{
+  width: 2.5%;
+  background-color: rgb(233, 217, 217);
+}
+
+header div#two{
+  text-align: right;
+}
+
+body {
+  background: linear-gradient(to right bottom, white,black);
+}
+
+body {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1020px;
+	min-width: 640px;
+  min-height: 100%;
+}
+
+body{
+  margin: 0px auto;
+  min-height: 100%;
+  min-width: 320px;
+  max-width: 1024px;
+  width: 100%;
+}
+
+
+
+nav a {
+  background: linear-gradient(to right bottom, white,black);
+  font-size: 1.2em;
+  line-height: 2em;
+  text-align: center;
+  text-decoration: none;
+}  
+
+nav a:link, 
+nav a:visited {
+  color: rgb(239, 220, 156);
+}
+
+nav a:hover, 
+nav a:active {
+  background: linear-gradient(to right bottom, white,yellow);
+}   
+
+
+nav  li{
+  display: block;
+  float: left;
+  width: 9.9%;
+
+}
+
+nav a{
+  display: block;
+
+}
+
+div#vd2 video{
+  margin-top: 3em;
+  margin-left: 17em;
+}
+
+
+div#main img{
+  width: 500px;
+  padding: 3em;
+  float: left;
+}
+
+aside h1{
+  font-size: 1.5em;
+  margin-top: 5em;
+}
+
+fieldset#addtocart{
+  background: linear-gradient(to right bottom, white,black);
+}
+
+div#b img{
+  width: 70%;
+  padding: 2em;
+}
+div#b b{
+  float: left;
+  font-size: 3em;
+  padding: 0.5em;
+  font-family:'Courier New', Courier, monospace;
+}
+div#b p{
+  float: left;
+  text-align: left;
+  font-size: 1.5em;
+  padding: 0.5em;
+  font-family:'Courier New', Courier, monospace;
+}
+
+div#a img{
+  width: 70%;
+  float: left;
+  padding: 2em;
+
+}
+
+div#a b{
+  float: left;
+  font-size: 3em;
+  margin-top: 2em;
+  padding: 0.5em;
+  font-family:'Courier New', Courier, monospace;
+}
+div#a p{
+  float: left;
+  text-align: left;
+  font-size: 1.5em;
+  padding: 0.5em;
+  font-family:'Courier New', Courier, monospace;
+}
+
+footer p{
+  margin-left: 20px;
+  font-size: 15px;
+  letter-spacing: 0;
+}
+footer ul{
+  list-style-type: none;
+}
+footer{
+  padding: 2em;
+  background: linear-gradient(to right bottom, rgb(182, 181, 185),black);
+  
+}
+
+/*cart*/
+section#cart{
+  margin-left: 2em;
+  margin-bottom: 2em;
+}
+
+section#cart h1{
+  margin-top: 2em;
+  font-size: 3em;
+}
+
+section div{
+  padding: 0.5em;
+}
+
+section#cart fieldset{
+  padding: 2em;
+}
+
+section#cart legend{
+  background-color: grey;
+  padding: 1em;
+}
+
+h1#cart{
+  margin-top: 3em;
+}
+
+fieldset#address textarea{
+  width: 60em;
+  height: 200px;
+}
+
+fieldset#online input{
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+fieldset#card{
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+div#button{
+  margin-top: 1em;
+}
+
+input#cardBox5{
+  margin-left: 15em;
+}
+
+input#cardBox{
+  margin-left: 8em;
+}
+
+input#cardBox1{
+  margin-left: 1.9em;
+}
+
+input#cardBox2{
+  margin-left: 4em;
+}
+
+input#cardBox3{
+  margin-left: 4.7em;
+}
+
+input#tngBox{
+  margin-top: 1em;
+}
+
+div#oorc{
+  margin-bottom: 2em;
+}
+
+h1#cart,div#oorc,fieldset#online,fieldset#card,fieldset#tng{
+  margin-left: 1em;
+}
+
+fieldset#tng{
+  margin-bottom: 1em;
+}
+
+/*ty.html*/
+img#ty{
+  padding: 2em;
+  margin-left: 11em;
+}
+
+div#button1{
+  margin-left: 13em;
+  padding-bottom: 1em;
+}
+
+input#faq{
+  margin-left: 30em;
+}
+
+/*laptop html*/
+div#menu{
+  padding: 2em;
+  margin-top: 5em;
+}
+div#menu img{
+  width: 20%;
+}
+
+div#menu div#a1{
+  background-color: white;
+}
+
+div#a1 h2{
+  float: right;
+  margin-right: 2em;
+}
+div#b1{
+  margin-top: 0.5em;
+  background-color: white;
+  margin-bottom: 0.5em;
+}
+div#b1 h2{
+  float: left;
+  margin-left: 0.5em;
+}
+
+div#b1 img{
+  margin-left: 34em;
+  clear: right;
+}
+
+
+div#c1{
+  background-color: white;
+  margin-bottom: 0.5em;
+}
+
+div#c1 h2{
+  float: right;
+  margin-right: 2em;
+}
+
+div#d1{
+  background-color: white;
+  margin-bottom: 0.5em;
+}
+
+div#d1 img{
+  margin-left: 30em;
+}
+div#d1 h2{
+  float: left;
+  margin-left: 0.5em;
+}
+
+div#e1{
+  background-color: white;
+  margin-bottom: 0.5em;
+}
+
+div#e1 h2{
+  float: right;
+  margin-right: 2em;
+}
+
+div#f1{
+  background-color: white;
+  margin-bottom: 0.5em;
+}
+
+div#f1 img{
+  margin-left: 27em;
+}
+div#f1 h2{
+  float: left;
+  margin-left: 0.5em;
+}
+
+div#g1{
+  background-color: white;
+  margin-bottom: 0.5em;
+}
+
+div#g1 h2{
+  float: right;
+  margin-right: 2em;
+}
+
+div#h1{
+  background-color: white;
+  margin-bottom: 0.5em;
+}
+
+div#h1 img{
+  margin-left: 28em;
+}
+div#h1 h2{
+  float: left;
+  margin-left: 0.5em;
+}
+
+div#i1{
+  background-color: white;
+  margin-bottom: 0.5em;
+}
+
+div#i1 h2{
+  float: right;
+  margin-right: 2em;
+}
+
+div#j1{
+  background-color: white;
+  margin-bottom: 0.5em;
+}
+
+div#j1 img{
+  margin-left: 31em;
+}
+div#j1 h2{
+  float: left;
+  margin-left: 0.5em;
+}
+
+div#k1{
+  background-color: white;
+  margin-bottom: 0.5em;
+}
+
+div#k1 h2{
+  float: right;
+  margin-right: 2em;
+}
+
+div#l1{
+  background-color: white;
+  margin-bottom: 0.5em;
+}
+
+div#l1 img{
+  margin-left: 31em;
+}
+div#l1 h2{
+  float: left;
+  margin-left: 0.5em;
+}
+
+div#m1{
+  background-color: white;
+  margin-bottom: 0.5em;
+}
+
+div#m1 h2{
+  float: right;
+  margin-right: 2em;
+}
+
+div#n1{
+  background-color: white;
+  margin-bottom: 0.5em;
+}
+
+div#n1 img{
+  margin-left: 20em;
+}
+div#n1 h2{
+  float: left;
+  margin-left: 0.5em;
+}
+div#o1{
+  background-color: white;
+  margin-bottom: 0.5em;
+}
+
+div#o1 h2{
+  float: right;
+  margin-right: 2em;
+}
+
+/*pccomponent html*/
+div#com1{
+  padding: 3em;
+  float: left;
+  font-size: 1.5em;
+  text-align: center;
+  color: white;
+}
+
+div#com2{
+  padding: 3em;
+  float: right;
+  font-size: 1.5em;
+  text-align: center;
+  color: white;
+}
+
+div#com3 {
+  padding: 5em;
+  float: right;
+  text-align: center;
+  padding: 1em;
+  font-size: 1.5em;
+  color: white;
+}
+div#com4 {
+  padding: 5em;
+  color: white;
+}
+div#com4 p{
+  margin-left: 1.3em;
+  font-size: 1.5em;
+  color: white;
+}

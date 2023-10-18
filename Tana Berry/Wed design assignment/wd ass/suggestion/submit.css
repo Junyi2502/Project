@@ -1,0 +1,80 @@
+@charset "utf-8";
+
+html {
+    background-color: white;
+}
+
+body {
+    margin: 0 auto;
+    width: 100%;
+    min-width: 320px;
+    max-width: 1024px;
+}
+
+div {
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 1px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(217, 255, 242);
+    border: 3px solid rgb(17, 131, 93);
+    border-radius: 50px;
+
+    margin: 5% 10%;
+    padding: 0 20px 50px 20px;
+}
+
+p {
+    font-weight: bold;
+    margin-bottom: 100px;
+    color: rgb(17, 131, 93);
+    text-shadow: 0 2px 7px rgb(17, 106, 131);
+}
+
+a {
+    text-decoration: none;
+    font-size: 25px;
+    color: rgb(17, 106, 131);
+
+    padding: 15px 20px;
+    border-radius: 50px;
+    box-shadow: 0 0 20px rgba(47, 55, 111, 0.2);
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    background-color: rgba(47, 55, 111, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* img & animation */
+
+img {
+    width: 300px;
+
+    animation-name: done;
+    animation-direction: alternate;
+    animation-duration: 0.7s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes done {
+    0% { transform: rotateZ(30deg);}
+    100% { transform: rotateZ(-30deg);}
+}
+
+/* Tablet and Desktop Styles: greater than 750px */
+@media only screen and (max-width: 750px){
+    div {
+        font-size: 25px;
+    }
+}
+
+/* Tablet and Desktop Styles: greater than 640px */
+@media only screen and (max-width: 640px){
+    div {
+        font-size: 20px;
+    }
+}

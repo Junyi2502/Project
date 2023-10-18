@@ -1,0 +1,13 @@
+input:focus, select:focus{
+    background-color: rgb(255, 255, 180);
+}
+
+input#cardBox:focus:valid,
+input#cardBox1:focus:valid {
+    background: rgb(220, 255, 220) url(tick.jpg) right/contain no-repeat;
+}
+
+input#cardBox:focus:invalid,
+input#cardBox1:focus:invalid {
+    background: rgb(255, 230, 230) url(wrong.webp) right/contain no-repeat;
+}

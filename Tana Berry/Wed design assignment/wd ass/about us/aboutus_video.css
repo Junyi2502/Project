@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+video {
+    display: block;
+    margin: 0 10% 10% 10%;
+    width: 80%;
+}
+
+audio {
+    display: block;
+    position: relative;
+    width: 70%;
+    margin-left: 10%;
+    margin-bottom: 10px;
+}
+
+/* Track Styles */
+::cue {
+    background-color: transparent;
+    text-shadow: black 1px 1px 5px;
+    color: rgb(209, 223, 255);
+    font: 15px sans-serif;
+}
+
+::cue(.Sub) {
+    font: 20px sans-serif;
+}
+
+::cue(.End) {
+    font: 60px sans-serif;
+}
+
+/* Tablet and Desktop Styles: greater than 640px */
+@media only screen and (max-width: 640px) {
+    video {
+        margin-bottom: 50px;
+    }
+
+    ::cue {
+        background-color: transparent;
+        text-shadow: black 1px 1px 5px;
+        color: rgb(209, 223, 255);
+        font: 10px sans-serif;
+    }
+    
+    ::cue(.Sub) {
+        font: 15px sans-serif;
+    }
+    
+    ::cue(.End) {
+        font: 40px sans-serif;
+    }
+}

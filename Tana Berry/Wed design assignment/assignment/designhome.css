@@ -1,0 +1,181 @@
+@charset "utf-8";
+html {
+	background:url(background.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+  
+header {
+	background: linear-gradient(to right bottom,rgb(29, 4, 139),rgb(124, 4, 148));
+	width : auto;
+	padding-bottom: 5%;
+	text-align: center;
+}
+
+header ::-webkit-input-placeholder {
+    color: black;
+}
+
+body {
+	margin:0 auto;
+	width: 100%;
+	max-width: 1020px;
+	min-width: 640px;
+	background-color: rgb(9, 8, 8);
+	color: aliceblue;
+}
+
+nav  li{
+	display: block;
+	float: left;
+	width: 9.9%;
+	margin-top: 10px;
+	
+}
+
+nav a{
+	display: block;
+	background: linear-gradient(to right bottom,rgb(121, 119, 119),black);
+	text-align: center;
+	text-decoration: none;
+	line-height: 2em;
+	font-size: 1.2em;
+	color: aliceblue;
+}
+
+article.rtx40series {
+    font-size: 3.5em;
+    font-family: fantasy;
+    text-align: center;
+
+}
+
+div.bla {
+	margin-bottom: 2em;
+}
+
+article.blabla {
+    font-size: 1em;
+    font-family: serif;
+    text-align: center;
+}
+
+article.blabla  a {
+    color: aliceblue;
+    font-size: 1.5em;
+}
+
+article.partner {
+    font-size: 0.9em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+
+article.partner a {
+    color: whitesmoke;
+    font-size: 1.5em;
+}
+
+footer {
+    margin-top: 40px;
+    color: rgb(231, 237, 255);
+    position: relative;
+    clear:both;
+    font-family: sans-serif;
+    background: linear-gradient(to right bottom,rgb(29, 4, 139),rgb(124, 4, 148));
+    padding-bottom: 30px;
+}
+
+footer p {
+    margin-left: 20px;
+    font-size: 15px;
+    letter-spacing: 0;
+}
+
+table {
+    position: relative;
+    margin-left: 20px;
+    color: rgb(231, 237, 255);
+}
+
+.contact, .aboutus {
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding-top: 20px;
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+th {
+    font-weight: 500;
+    text-align: left;
+    letter-spacing: 0;
+    word-spacing: 0;
+    margin-right: 30px;
+    padding-right: 10px;
+}
+
+td {
+    padding-right: 50px;
+}
+
+a#tel, a#mail, a#about, a#form{
+    text-decoration: none;
+    color: rgb(231, 237, 255, 0.7);
+}
+
+a#tel:hover,a#mail:hover, a#about:hover, a#form:hover {
+    text-shadow:2px 2px 5px rgba(122, 162, 255, 0.8);
+}
+
+.tanaBerry {
+    margin-right: 20px;
+    margin-bottom: 0;
+    line-height: 0;
+    text-align: right;
+}
+
+video {
+    width: 700px;
+   margin-left: 10em;
+}
+
+div.part {
+    margin: 0.1em 0.1em 0.1em 0.1em;
+    background-color: rgb(245, 237, 74);
+    display: block;
+    border: 0.15em solid rgb(221, 199, 1);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 5em;
+}
+
+article.now {
+    text-align: center;
+    font-size: 1.5em;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+article.extra {
+    font-size: 1.5em;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.info {
+    display: block;
+    border: 0.1em solid rgb(255, 255, 255);
+    color: azure;
+}
+
+.info > .address {
+    float: left;
+    font-size: 1em;
+}
+
+.info > .workshop {
+    float: left;
+    width: 200px;
+    padding-top: 1.5em;
+    padding-left: 0.5em;
+}

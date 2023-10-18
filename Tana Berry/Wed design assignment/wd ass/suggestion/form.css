@@ -1,0 +1,388 @@
+@charset "utf-8";
+
+html{
+    position:relative;
+    background: rgb(233, 243, 255);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    color : rgb(51, 15, 72, 0.8);
+    font-weight: 700;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+}
+
+body {
+    margin: 0 auto;
+    min-height: 100%;
+    min-width: 320px;
+    max-width: 1024px;
+    width: 100%;
+}
+
+/* header */
+
+header{
+    position: relative;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid black;
+} 
+
+#home{
+    width: 30%;
+    height: auto;
+    min-width: auto;
+    max-width: auto;
+    padding:10px 10px;
+    margin-bottom: 40px;
+    float: left;
+}
+
+a:hover img#home{
+    background-color: rgba(112, 95, 146, 0.6);
+    transition: all 0.3s ease;
+}
+
+/* list */
+
+nav>ul li{
+    list-style-type: none;
+    float: right;
+}
+
+/* other */
+.other {
+    margin-top: 5px;
+    text-align: right;
+    float: right;
+}
+
+.other a {
+    color : rgb(51, 15, 72, 0.8);
+    padding: 25px 20px 0 20px;
+    font-size: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.other #list {
+    display: none;
+    z-index: 3;
+    text-align: center;
+    position:absolute;
+    right: 0;
+    padding: 10px;
+    background: rgb(215, 213, 255);
+    box-shadow: 0 2px 10px rgba(112, 95, 146, 0.6);
+}
+
+/* product */
+
+.product a{
+    color : rgb(51, 15, 72, 0.8);
+    padding: 18px 35px 7px 30px;
+    font-size: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+li.product {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.product #list {
+    display: none;
+    z-index: 3;
+    text-align: center;
+    position:absolute;
+    margin-top: 6px;
+    right: 80px;
+    padding: 10px 19px;
+    background: rgb(215, 213, 255);
+    box-shadow: 0 2px 10px rgba(112, 95, 146, 0.6);
+}
+
+/* hover */
+
+.other a:hover, .product a:hover{
+    color: rgba(24, 7, 61, 0.7);
+    background-color: rgba(112, 95, 146, 0.6);
+    transition: all 0.3s ease;
+}
+
+.other:hover #list, .product:hover #list{
+    display: block;
+}
+
+#list a {
+    line-height: 40px;
+    color: rgb(101, 111, 165);
+    margin: 0;
+    padding: 10px;
+}
+
+#list a:hover {
+    color: rgb(65, 29, 100);
+    text-shadow: 0 0 5px rgb(114, 69, 159);
+    background: none;
+}
+
+#list a#homelink {
+    font-size: 25px;
+}
+
+#list a#promo{
+    font-size: 25px;
+    padding: 20px 0;
+    color: rgb(110, 74, 255);
+}
+
+#list a#promo:hover {
+    color: rgb(68, 29, 100);
+    text-shadow: 0 0 5px rgb(146, 69, 159);
+}
+
+/* title */
+
+.title {
+    clear: both;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 5px 5px 5px rgb(131, 166, 255);
+    font-size: 40px;
+}
+
+/* body */
+
+/* option */
+
+div.option {
+    font-size: 25px;
+}
+
+#opt {
+    font-size: 30px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+
+input#problem, input#suggestion {
+    margin-left: 50px;
+}
+
+/* warning */
+
+#select {
+    margin-top: 10px;
+    margin-left: 30px;
+    font-size: 15px;
+    font-family: sans-serif;
+    letter-spacing: 0;
+    color: rgb(167, 33, 69);
+}
+
+/* fieldset */
+fieldset {
+    border: solid rgb(34, 9, 51, 0.5);
+    border-radius: 10px;
+    background: linear-gradient(rgb(173, 136, 209,0.5), rgb(119, 144, 214,0.5));
+    margin: 1em;
+    padding: 1em;
+}
+
+p#warning {
+    margin-top: 0;
+    margin-left: 1em;
+    font-family: sans-serif;
+    letter-spacing: 0;
+    font-weight: 700;
+    font-size: 15px;
+    color: rgb(167, 33, 69);
+    display: none;
+}
+
+textarea {
+    display: block;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: solid rgb(34, 9, 51, 0.5);
+    border-radius: 10px;
+    background-color: rgb(34, 9, 51, 0.3);
+    font-size: 20px;
+    padding: 5px 10px;
+    margin: 5px 20px;
+    width: 90%;
+    height: 30%;
+ }
+
+ input#nameBox, input#phoneBox, input#pmailBox, input#smailBox {
+    display: block;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: solid rgb(34, 9, 51, 0.5);
+    border-radius: 5px;
+    background-color: rgb(34, 9, 51, 0.3);
+    font-size: 15px;
+    padding: 15px 10px;
+    margin: 5px 20px;
+    width: 40%;
+    height: 5%;
+ }
+
+textarea::placeholder, input#phoneBox::placeholder{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(227, 235, 255, 0.5);
+}
+
+/* focus */
+textarea:focus {
+    color: rgb(227, 235, 255, 0.8);
+    background-color: rgb(34, 9, 51, 0.7);
+    transition: all 0.1s ease;
+}
+
+input#nameBox:focus, input#phoneBox:focus, 
+input#pmailBox:focus, input#smailBox:focus {
+    color: rgb(227, 235, 255, 0.8);
+    background-color: rgb(34, 9, 51, 0.7);
+    transition: all 0.1s ease;
+}
+
+input#nameBox:focus:invalid+p#warning, input#phoneBox:focus:invalid+p#warning, 
+input#pmailBox:focus:invalid+p#warning, input#smailBox:focus:invalid+p#warning {
+    display: block;
+}
+
+/* file */
+#fileBox {
+    margin: 10px 20px;
+    padding: 2em;
+    background: rgba(190, 98, 255, 0.3);
+    border: 3px dashed rgb(34, 9, 51, 0.7);
+    transition: all 0.2s ease;
+}
+
+#fileBox:hover {
+    background: rgba(114, 82, 208, 0.4);
+    transition: all 0.3s ease;
+}
+
+p#tips {
+    font-family: sans-serif;
+    letter-spacing: 0;
+    font-size: 17px;
+    margin-top: 1px;
+    margin-left: 20px;
+    line-height: 20px;
+    color: rgb(34, 9, 51, 0.7);
+}
+
+/* submit */
+.submit {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: rgba(255, 254, 243);
+    float: right;
+    margin: 1em 20px;
+    border-top: 3px solid white;
+    border-left: 3px solid white;
+    border-bottom: 5px solid rgb(99, 50, 128);
+    border-right: 5px solid rgb(99, 50, 128);
+    padding: 0.5em 2em;
+    background: linear-gradient( rgb(255, 110, 170), rgb(235, 168, 255));
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+.submit:hover {
+    font-size: 30px;
+    letter-spacing: 7px;
+    margin: 0.6em 10px;
+    padding: 0.7em 2em;
+    border-radius: 30px;
+    border-top: 3px solid white;
+    border-left: 3px solid white;
+    border-bottom: 5px solid rgb(122, 72, 152);
+    border-right: 5px solid rgb(122, 72, 152);
+    transition: all 0.3s ease;
+}
+
+.submit:active {
+    font-size: 25px;
+    letter-spacing: 2px;
+    margin: 1em 20px;
+    padding: 0.5em 2em;
+    color: rgba(255, 254, 243, 0.5);
+    background: linear-gradient( rgb(229, 119, 165), rgb(209, 153, 226));
+    transition: all 0.2s ease;
+}
+
+/* footer */
+footer {
+    position: relative;
+    clear:both;
+    font-family: sans-serif;
+    background: linear-gradient(rgb(173, 136, 209,0.7), rgb(119, 144, 214,0.7));
+    padding-bottom: 30px;
+}
+
+footer p {
+    margin-left: 20px;
+    font-size: 15px;
+    letter-spacing: 0;
+}
+
+table {
+    position: relative;
+    margin-left: 20px;
+}
+
+.contact, .aboutus {
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding-top: 20px;
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+th {
+    font-weight: 500;
+    text-align: left;
+    letter-spacing: 0;
+    word-spacing: 0;
+    margin-right: 30px;
+    padding-right: 10px;
+}
+
+td {
+    padding-right: 50px;
+}
+
+a#tel, a#mail, a#about, a#faqlink{
+    text-decoration: none;
+    color: rgb(76, 82, 183);
+}
+
+a#tel:hover,a#mail:hover, a#about:hover, a#faqlink:hover {
+    color: rgb(30, 37, 164);
+    font-weight: bold;
+}
+
+.tanaBerry {
+    margin-right: 20px;
+    margin-bottom: 0;
+    line-height: 0;
+    text-align: right;
+}
+
+/* Tablet and Desktop Styles: greater than 900px */
+@media only screen and (max-width: 900px){
+
+    td{
+        padding-right: 20;
+    }
+}
