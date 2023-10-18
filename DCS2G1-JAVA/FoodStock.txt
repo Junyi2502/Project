@@ -1,0 +1,9 @@
+1001|Vegetable|5|10000
+1002|Fresh Fruit|6|2000
+1003|Long Bread|2|2000
+1004|Soft Drink|3.5|2000
+1005|Toiletries|15|2000
+1006|Canned Food|15|2000
+1007|Medicine|35|2000
+
+1008|junyi|1|1
